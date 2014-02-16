@@ -1,0 +1,73 @@
+AddDefaultCharset UTF-8
+AddType application/vnd.ms-fontobject .eot
+AddType font/ttf .ttf
+AddType font/otf .otf
+AddType application/x-font-woff .woff
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+  
+    # my url is http://localhost/arny
+    #RewriteBase /arny/
+    # set your own
+    RewriteBase /
+    #non www to www
+    #RewriteCond %{HTTP_HOST} .
+    #RewriteCond %{HTTP_HOST} !^www.derrickroccka.com [NC]
+    #RewriteRule (.*) http://www.derrickroccka.com/$1 [R=301,L]
+
+    #Removes access to the system folder by users.
+    #Additionally this will allow you to create a System.php controller,
+    #previously this would not have been possible.
+    #'system' can be replaced if you have renamed your system folder.
+    RewriteCond %{REQUEST_URI} ^system.*
+    RewriteRule ^(.*)$ /derrickroccka/index.php?/$1 [L]
+    
+    #When your application folder isn't in the system folder
+    #This snippet prevents user access to the application folder
+    #Submitted by: Fabdrol
+    #Rename 'application' to your applications folder name.
+    RewriteCond %{REQUEST_URI} ^application.*
+    RewriteRule ^(.*)$ /derrickroccka/index.php?/$1 [L]
+
+    #Checks to see if the user is attempting to access a valid file,
+    #such as an image or css document, if this isn't true it sends the
+    #request to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ derrickroccka/index.php?/$1 [L]
+</IfModule>
+# turn on the module for this directory
+<IfModule mod_expires.c>
+ExpiresActive on
+# set default
+ExpiresDefault "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 months"
+ExpiresByType image/gif "access plus 1 months"
+ExpiresByType image/jpeg "access plus 1 months"
+ExpiresByType image/png "access plus 1 months"
+ExpiresByType text/css "access plus 1 months"
+ExpiresByType text/javascript "access plus 1 months"
+ExpiresByType application/javascript "access plus 1 months"
+ExpiresByType application/x-shockwave-flash "access plus 1 months"
+</IfModule>
+<IfModule mod_deflate.c>
+    #The following line is enough for .js and .css
+    AddOutputFilter DEFLATE js css
+
+    #The following line also enables compression by file content type, for the following list of Content-Type:s
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/json
+
+    #The following lines are to avoid bugs with some browsers
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html 
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
+#by me
+AddDefaultCharset UTF-8
+# Speed up caching
+FileETag MTime Size
