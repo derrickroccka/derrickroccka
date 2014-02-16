@@ -5,6 +5,7 @@
 
 {{! The big featured header on the homepage, with the site logo and description }}
 <header class="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+<div style="position:absolute;left:0;top:0;color:white;z-index:10000;">Go back to <a href="/" style="color:#e87bae">DerrickRoccka.com</a></div>
     <div class="vertical">
         <div class="site-head-content inner">
             {{#if @blog.logo}}<a class="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}
