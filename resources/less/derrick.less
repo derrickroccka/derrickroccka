@@ -1,0 +1,174 @@
+/**
+*
+* DERRICK ROCCKA SECTION LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#derrick-container{
+	min-height: 960px !important;
+	#about-me{
+		margin: 0 auto;
+		max-width: 640px;
+		#about-me_who{
+			background-position: 0 0;
+		}
+		#about-me_love{
+			background-position: -32px 0;
+		}
+		#about-me_do{
+			background-position: -64px 0;
+		}	
+		#about-me_use{
+			background-position: -96px 0;
+		}
+		.about-me_icon{
+			background: url("../img/whats.png") no-repeat left top transparent;
+			cursor: pointer;
+			font-size: 0;
+			height: 32px;
+			width: 32px;
+		}
+		.languages{
+			li{
+				background: @pink;
+			}
+		}
+		.frameworks{
+			li{
+				background: @orange;
+			}
+		}
+		.cmss{
+			li{
+				background: @green;
+			}
+		}
+		.tools{
+			li{
+				background: @blue;
+			}
+		}
+		.learning{
+			li{
+				background: @red;
+			}
+		}
+		.text_left;
+		ul{
+			li{
+				color: @white;
+				margin: 0 0 4px 0;
+				padding: 10px 10px;
+				.inline-block;
+			}
+		}
+
+	}
+	#derrick-logo-center {
+		cursor: pointer;
+		height: 640px;
+		margin: 0 auto;
+		width: 640px;
+		img{
+			-moz-transition: width 0.5s ease;
+			-ms-transition: width 0.5s ease;
+			-o-transition: width 0.5s ease;
+			-webkit-transition: width 0.5s ease;
+			height: 100%;
+			width: 100%;
+		}
+		figcaption{
+			color: @pink;
+			font-family: @font-extra;
+			font-size: @h1*2;
+			font-style: normal;
+			z-index: @z-max;
+			.derrick-caption-contact_item{
+				.inline-block;
+				background: url("../img/contact.png") no-repeat left top transparent;
+				cursor: pointer;
+				font-size: 0;
+				height: 64px;
+				margin: 10px 20px;
+				width: 64px;
+			}
+			.phone{
+				background-position: 0 0;
+			}
+			.email{
+				background-position: -64px 0;
+			}
+			.tw{
+				background-position: -129px 0;
+			}	
+			.gp{
+				background-position: -192px 0;
+			}
+		}
+		.text_center;
+	}
+	p{
+		.strip;
+		.text_center;
+	}
+}
+
+#derrick-alerts{
+		.text_center;
+		background: @orange;	
+		bottom: 0;
+		color: @white;
+		font-family: @font-main, "Helvetica Neue";
+		font-size: @h1;
+		opacity: 0.5;
+		padding: 10px 10px;
+		position: relative;
+}
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media only screen and (max-width: 640px) and (min-width: 480px) {
+	#derrick-container{
+		#about-me{
+			max-width: 460px !important;	
+		}
+		#derrick-logo-center{
+			height: 480px;
+			width: 480px;
+			img{
+				height: 480px;
+				width: 480px;
+			}
+		}
+	}
+}
+@media only screen and (max-width: 480px) {
+	#derrick-container{
+		min-height: auto !important;
+		#about-me{
+			max-width: 300px !important;	
+			.text_left;
+		}
+		#derrick-logo-center{
+			height: 320px;
+			width: 320px;
+			img{
+				height: 320px;
+				width: 320px;
+			}
+		}
+	}
+}
+
+/*-----  End of MEDIA QUERIES  ------*/
+

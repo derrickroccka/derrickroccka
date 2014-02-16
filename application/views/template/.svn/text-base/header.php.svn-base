@@ -1,0 +1,13 @@
+<header id="header" class="navbar navbar-fixed-top architects">
+	<div id="fixed-header" class="navbar-inner transparent-back">
+		<div class="container">
+			<?php echo $nav?>
+			<h1 class="white-font">Stop desilusi&oacute;n</h1>
+		</div>
+	</div>
+	<!--botón de sugerir web-->
+	<div id="sugiere-btn" class="span2 center btn-large btn-primary text-center white-font orange-back"
+	href="#sugiere-modal" role="button" data-toggle="modal">
+			<a href="" title="Sugiere una web" class="white-font">Sugiere una web</a>
+	</div>	
+</header>

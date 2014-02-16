@@ -1,0 +1,31 @@
+<?php
+if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
+/**
+ * Modelo dedicado a la tabla "webs"
+ *
+ * */
+class Webs_model extends MY_Model {
+	/**
+	 * Campos a validar del formulario de sugerencia de webs
+	 * Define las normas con las que se deben validar los campos ("set_rules()")
+	 * */
+	public $validate = array(
+		array(
+			'field' => 'name',
+			'label' => 'Nombre',
+			'rules' => 'required|max_length[100]|alpha_dash|is_unique[webs.name]|xss_clean'
+		),
+		array(
+			'field' => 'url',
+			'label' => 'Url',
+			'rules' => 'required|max_length[100]|prep_url|is_unique[webs.url]|xss_clean'
+		),
+		array(
+			'field' => 'description',
+			'label' => 'Descripci&oacute;n',
+			'rules' => 'required|max_length[500]|xss_clean'
+		)
+	);
+
+}

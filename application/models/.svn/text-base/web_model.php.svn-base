@@ -1,0 +1,33 @@
+<?php
+if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
+/**
+ * Model dedicated to the DB table "webs"
+ *
+ * */
+class Web_model extends MY_Model {
+	/**
+	 * Fields to validate from a form
+	 * Defines the rules for ("set_rules()")
+	 * Some rules are made by @author Derrick Roccka
+	 * These rules are defined in application/libraries/MY_Form_validation.php
+	 * */
+	public $validate = array(
+		array(
+			'field' => 'name',
+			'label' => 'nombre',
+			'rules' => 'required|max_length[100]|alpha_numeric|is_unique[webs.name]|xss_clean'
+		),
+		array(
+			'field' => 'url',
+			'label' => 'url',
+			'rules' => 'required|max_length[100]|is_unique[webs.url]|valid_url|url_exists|xss_clean'
+		),
+		array(
+			'field' => 'description',
+			'label' => 'descripci&oacute;n',
+			'rules' => 'required|max_length[500]|xss_clean'
+		)
+	);
+
+}

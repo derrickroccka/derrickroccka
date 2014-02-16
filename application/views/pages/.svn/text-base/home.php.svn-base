@@ -1,0 +1,78 @@
+<div class="container merriNormal">
+	<section id="main-section">
+		<!-- --------------- -->
+		<!-- Slider container -->
+		<!-- --------------- -->
+		
+		<div id="slider-container" class="row-fluid">
+			 <div class="span12">
+				<div id="slider">
+					<?php $result = $this -> db -> get('webs') -> result(); ?>
+					<?= partial('partials/_web', $result, TRUE) ?>
+				</div>
+			 </div>
+		</div><!-- /slider-container -->
+		
+		<!-- --------------- -->
+		<!-- Title separator -->
+		<!-- --------------- -->
+		
+		<div class="row-fluid purpleSeparator-back-sk2">
+			<h2 class="architects separator">
+				<small id="separator-title" class="white-font"><?php echo $title; ?></small>
+			</h2>
+		</div><!-- /separator -->
+		
+		<!-- --------------- -->
+		<!-- Web info row -->
+		<!-- --------------- -->
+		
+		<div id="web-info-container" class="row-fluid">
+			<!-- thumbnail -->
+			 <div id="web-info-thumbnail" class="span5 a"></div>
+			 <!-- web info -->
+			 <div id="web-info" class="span7">
+			 	<!-- web description -->
+				<div>
+					<h3 id="web-info-title" class="architects span9"></h3>
+					<div class="clearfix"></div>
+					<p id="web-info-description" class="merriNormal"></p>
+				</div>
+				<!-- web score -->
+				<div class="row-fluid">
+					<div id="star" class="display-inline-block"></div>
+					<div id="hint" class="display-inline-block"></div>
+					<button id="vote" name="vote" type="button" 
+						class="btn orange-back white-font architects display-none">
+							Votar
+					</button>
+					<!-- current web selected. used to detect id when voting -->
+					<input type="hidden" value="" id="web-selected" name="web-selected"/>
+				</div>
+				
+				<!-- options (share, comment...)--> 
+				<div id="web-info-options" class="row-fluid purpleSeparator-back-sk2 display-none">
+					<div id="web-info-options-links" class="display-inline-block web-info-options">
+						<div id="visitar" class="display-inline-block margin-right-20-px"></div>
+						<div id="comentar" class="display-inline-block margin-right-20-px"></div>
+					</div>
+					<!-- share buttons -->
+					<div id="web-info-options-social" class="display-inline-block display-block-at-435">
+						<a href="" class="share-fb share display-inline-block" title="Comparte esto en facebook"></a><a href="" class="share-tw share display-inline-block"  title="Comparte esto en twitter"></a><a href="" class="share-gp share display-inline-block"  title="Comparte esto en Google+"></a><a href="" class="share-em share display-inline-block"  title="Comparte esto por correo"></a>
+					</div>
+				</div>
+			 </div><!-- /web-info -->
+		</div><!-- /web-info-container -->
+		
+		<!-- --------------- -->
+		<!-- Comments separator -->
+		<!-- --------------- -->
+		
+		<div id="separator-comments" class="row-fluid purpleSeparator-back-sk2 display-none">
+			<h2 class="architects separator">
+				<small id="separator-comments-title" class="white-font"></small>
+			</h2>
+		</div><!-- /separator -->
+	</section><!-- /main-section -->
+</div>
+

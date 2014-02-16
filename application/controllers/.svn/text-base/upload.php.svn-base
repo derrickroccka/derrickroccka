@@ -1,0 +1,49 @@
+<?php
+if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
+/**
+ * FILE UPLOAD
+ * 
+ * This class will be used to upload files
+ * @author Derrick Roccka
+ * */
+class Upload extends CI_Controller {
+
+	function __construct() {
+		parent::__construct();
+		$this -> load -> helper(array(
+			'form',
+			'url'
+		));
+	}
+    /**
+	 * DO UPLOAD
+	 * 
+	 * This class is modified in order to recieve a field
+	 * This field will be the name of the <input> type=file in the form
+	 * By default, field will be equal to ""
+	 * This function is declared static in order to be accesed everywhere
+	 * */
+	function do_upload() {
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = '200';
+		$config['max_width'] = '1024';
+		$config['max_height'] = '768';
+
+		$this -> load -> library('upload', $config);
+
+		if (!$this -> upload -> do_upload($this->input->post('field'))) {
+			$error = array('error' => $this -> upload -> display_errors());
+
+			echo json_encode($error);
+		}
+		else {
+			$data = array('upload_data' => $this -> upload -> data());
+
+			echo json_encode($data);
+		}
+	}
+
+}
+?>

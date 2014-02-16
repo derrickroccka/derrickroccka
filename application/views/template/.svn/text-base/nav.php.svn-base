@@ -1,0 +1,4 @@
+<ul class="nav" >
+	<li><a class="<?php echo isActive($pageName,"about")?>" href="#colabora-modal" role="button" data-toggle="modal">Colabora</a></li>
+	<li><a class="<?php echo isActive($pageName,"about")?>" href="#info-modal" role="button" data-toggle="modal">+ Info</a></li>
+</ul>

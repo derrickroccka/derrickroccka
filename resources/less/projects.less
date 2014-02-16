@@ -1,0 +1,126 @@
+/**
+*
+* PROJECTS SECTION LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#projects-container{
+	.roundabout-holder {
+		height: 15rem;
+		list-style: none;
+		margin: 0;
+		overflow: hidden;
+		padding: 0;
+		position: relative;
+		top: -5px;
+		.roundabout-moveable-item {
+			cursor: pointer;
+			height: 64px;
+			text-align: center;
+			width: @proj-item-w;
+		}
+		.roundabout-in-focus {
+			h2{
+				color: @pink !important;
+			}
+			cursor: auto;
+		}
+	}
+	#projects{
+		font-family: @font-extra;
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		width: @proj-item-w;
+		.project-name{
+			cursor: pointer;
+			.decoration-none;
+			h2{
+				color: @white;
+				font-family: @font-extra;
+				font-weight: normal;
+			}
+		}
+	}
+	#projects-filter{
+		cursor: pointer;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		li{
+			&:after{
+				content: "\00a0\00a0//\00a0\00a0";
+			}
+			list-style: none;
+			.decoration-none;
+			.inline-block;
+			span{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+		.strip;
+		.text_center;
+	}
+	#projects-info{
+		margin: 0 auto;
+		width: @proj-item-w;
+		.project-tech{
+			color: @white;
+			font-size: @h1/1.75;
+			padding: 10px 5px;
+		}
+		.project-progress-title{
+			.text_center;
+		}
+		.project-progress-bar{
+			background: @pink;
+		}
+		.project-url, .project-cat{
+			.text_center;
+			padding: 10px 0;
+		}
+		h3{
+			color: @white;
+			padding: 30px 0 0 0;
+		}
+		ul{
+			font-family: @font-extra;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			li{
+				.decoration-none;
+				list-style: none;
+				a{
+					&:hover{
+						color: @white;
+					}
+					.decoration-none;
+					color: @pink;
+				}
+			}
+		}
+	}
+	#projects-instructions{
+		background: url(../img/arrow.png) no-repeat;
+		height: 90px;
+		margin: 0 auto;
+		position: relative;
+		width: @proj-item-w;
+	}
+}
+
+
+
+

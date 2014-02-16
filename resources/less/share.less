@@ -1,0 +1,110 @@
+/**
+*
+* SHARE SECTION LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#share-container{
+	.share-text-bottom{
+		color: @pink;
+		font-family: @font-extra;
+		font-size: @h1*4;
+		position: relative;
+	}
+	#share-ops_text, #share-smile{
+		font-family: @font-extra;
+		font-size: @h1*2;
+		position: relative;
+	}
+	#share-smile{
+		font-size: @h1*10;
+		line-height: @h1*10;
+	}
+	#share-social_container{
+		height: @min-screen-h*1.5;
+		margin: 0 auto;
+		position: relative;
+		#share-social{
+			height: @min-screen-h*1.5;
+			margin-top: @min-screen-h/3;
+			position: relative;
+			.share-social_item{
+				background: url("../img/test.png") no-repeat left top transparent;
+				cursor: pointer;
+				height: @min-screen-h/3;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				width: @min-screen-w/4;
+				.inline-block;
+			}
+			.fb{
+				background-position: 0 0;
+			}
+			.tw{
+				background-position: -80px 0;
+			}
+			.gp{
+				background-position: -160px 0;
+			}	
+			.email{
+				background-position: -240px 0;
+			}
+		}
+		.strip;
+		.text_center;
+	}
+	#share-derrick_face{
+		bottom: 0;
+		float: right;
+		height: 473px;
+		position: relative;
+		width: @min-screen-w;
+		img{
+			height: 473px;
+			margin-top: 16px !important;
+			width: @min-screen-w;
+		}
+	}
+	#share-fork{
+		float: right;
+		font-size: @h1;
+		height: auto;
+		margin-top: -50px;
+		min-height: 50px;
+		position: relative;
+		figure{
+			height: 256px;
+			margin: 0 auto;
+			position: relative;
+			width: 256px;
+		}
+		.strip;
+		.text_center;
+	}
+	p{
+		.strip;
+		.text_center;
+	}
+}
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media only screen and (max-width: 480px) {
+	.share-text-bottom{
+		font-size: @h1*2 !important;
+	}
+}
+
+/*-----  End of MEDIA QUERIES  ------*/			

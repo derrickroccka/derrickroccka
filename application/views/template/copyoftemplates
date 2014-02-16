@@ -1,0 +1,4 @@
+		   <li class="project-tech"><%= tech %></li>
+		   <li class="project-progress-title"><span style="font-size:2em"><%= progress %>%</span></li>
+		   <li class="project-progress-bar" style="width:<%= progress %>%; height: 20px;"></li>
+		   <li class="project-url"><a href="<%= url %>" title="<% name %>"><%= url %></a></li>

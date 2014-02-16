@@ -1,0 +1,5 @@
+<tr>
+<td><?= $row->id ?></td>
+<td><?= $row->name ?></td>
+<td><?= $row->url ?></td>
+</tr>

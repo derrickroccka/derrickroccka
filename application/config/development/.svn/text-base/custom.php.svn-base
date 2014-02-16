@@ -1,0 +1,10 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+$config['site_title'] = 'Stop desilusi&oacute;n';
+$config['site_description'] = 'Acabar con la desilusi&oacute;n. La web donde encontrar&aacute;s las mejores webs destinadas a fines sociales.';
+$config['site_author'] = 'Derrick Roccka';
+$config['site_keywords'] = 'ayuda social, social, crisis, solidaridad';
+$config['site_slogan'] = 'Porque acabar con la desilusi&oacute;n est&aacute; a un solo verbo de distancia';
+
+/* End of file custom.php */
+/* Location: ./application/config/development/custom.php */

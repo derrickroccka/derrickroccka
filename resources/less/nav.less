@@ -1,0 +1,90 @@
+/**
+*
+* NAVIGATION MENU LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+.menu{
+	cursor: pointer;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 64px;
+	z-index: @z-max;
+	ul{
+		li{
+			-webkit-transition: font 2s ease;
+			-moz-transition: font 2s ease;
+			-o-transition: font 2s ease;
+			-ms-transition: font 2s ease;
+			&:nth-child(odd){
+				background: @grey;
+				color: @white;
+				a{
+					color: @white;
+					text-decoration: none;
+				}
+			}
+			&:nth-child(even){
+				background: @white;
+				a{
+					color: @grey;
+					text-decoration: none;
+				}
+			}
+			&:first-child{
+				&:hover{
+					font-size: @h1;
+				}
+				background: @pink;
+			}
+			[title]{
+				&:hover{
+					&:before{
+						background: @pink;
+						border:0;
+						color: @white;
+						content: attr(title);
+						font-family: @font-extra;
+						font-size: @h1;
+						line-height: @h1;
+						padding: 4px 10px 0 10px;
+						position: absolute;
+						right: 64px;
+						text-align: center;
+						vertical-align: middle;
+					}
+				}
+			}
+			color: @grey;
+			display: block;
+			font-size: @h1*2;
+			font-family: @font-heads;
+			line-height: @h1*2;
+			padding: 4px 0;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+}
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media only screen and (max-width: 767px) {
+	.menu{
+		display: none;
+	}
+}
+
+/*-----  End of MEDIA QUERIES  ------*/

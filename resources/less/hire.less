@@ -1,0 +1,84 @@
+/**
+*
+* HIRE&COMMENT SECTION LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#hire-container{
+	background: @red !important;
+	#hire-text, #hire-button_text{
+		font-family: "Trebuchet MS";
+		font-size: @h1*3;
+		margin: 0 auto;
+		.strip;
+		.text_center;
+	}
+	#hire_button{
+		background: url(../img/hire-button.png) no-repeat transparent;
+		cursor: pointer;
+		height: 100px;
+		margin: 0 auto;
+		width: @min-screen-w;
+	}
+	#hire-leave_comment, #hire-leave_comment-callback{
+		font-family: "Trebuchet MS";
+		font-size: @h1;
+		margin: 0 auto;
+		.strip;
+		.text_center;
+	}
+	#hire-form_container{
+		position: relative;
+		#hire-form{
+			input{
+				border: 5px solid #000;
+				color: @grey;
+				display: block;
+				font-family: "Trebuchet MS";
+				font-size: @h1/1.5;
+				margin: 0 auto;
+				margin-bottom: 20px;
+				padding: 20px;
+				text-align: center;
+				width: 320px;
+			}
+			input[type="submit"]{
+				background: @white;
+				font-size: @h1;
+			}
+		}	
+	}
+}
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media only screen and (max-width: 640px) and (min-width: 480px) {
+
+}
+@media only screen and (max-width: 480px) {
+	#hire-container{
+		#hire-text, #hire-button_text{
+			font-size: @h1*1.5 !important;
+		}
+		#hire-form_container{
+			#hire-form{
+				input{
+					border: none;
+				}
+			}	
+		}
+	}
+}
+
+/*-----  End of MEDIA QUERIES  ------*/

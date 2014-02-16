@@ -1,0 +1,118 @@
+/**
+*
+* FOOTER LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#footer{
+	background: #000 !important;
+	color: @white;
+	height: auto;
+	min-height: 400px;
+	/* basic structure for the rays setup */
+	#footer-rays_container	{ 
+		height: 320px; 
+		margin: 0 auto; 
+		position: relative; 
+		width: 320px; 
+		#footer-see_you { 
+			background: url(../img/see-you.png) 0 0 no-repeat; 
+			display: block; 
+			height: 240px; 
+			left: 40px; 
+			position: absolute; 
+			text-indent: -3000px; 
+			top: 40px; 
+			width: 240px; 
+			z-index: 2; 
+		}
+		#footer-rays{ /* with animation properties */
+			background: url(../img/rays-main.png) 0 0 no-repeat; 
+			height: 320px; 
+			left: 0; 
+			position: absolute; 
+			top: 0; 
+			width: 320px;
+		}
+		.text_center;
+	}
+	h3{
+		bottom: 0;
+		position: relative;	
+	}
+	.strip;
+	.text_center;
+}
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+
+@media only screen and (min-width: 768px) {
+		/*=================================
+		=            KEYFRAMES            =
+		=================================*/
+
+		/* keyframes for animation;  simple 0 to 360 */
+		@-webkit-keyframes spin {
+			from {
+				-webkit-transform: rotate(0deg);
+			}
+			to {
+				-webkit-transform: rotate(360deg);
+			}
+		}
+		
+		@-moz-keyframes spin {
+			from {
+				-moz-transform: rotate(0deg);
+			}
+			to {
+				-moz-transform: rotate(360deg);
+			}
+		}
+		
+		@-ms-keyframes spin {
+			from {
+				-ms-transform: rotate(0deg);
+			}
+			to {
+				-ms-transform: rotate(360deg);
+			}
+		}
+
+		/*-----  End of KEYFRAMES  ------*/
+		#footer-rays{ /* with animation properties */
+			/* Chrome + Safari */
+			-webkit-animation-duration: 40000ms;
+			-webkit-animation-iteration-count: infinite; 
+			-webkit-animation-name: spin; 
+			-webkit-animation-timing-function: linear;
+			
+			/* Firefox */
+			-moz-animation-duration: 40000ms;
+			-moz-animation-iteration-count: infinite; 
+			-moz-animation-name: spin; 
+			-moz-animation-timing-function: linear;
+			
+			/* IE */
+			-ms-animation-duration: 40000ms;
+			-ms-animation-iteration-count: infinite; 
+			-ms-animation-name: spin; 
+			-ms-animation-timing-function: linear;
+			
+			/* Opera */
+			-o-transition: rotate(3600deg); /* works */
+		}
+}
+
+/*-----  End of MEDIA QUERIES  ------*/

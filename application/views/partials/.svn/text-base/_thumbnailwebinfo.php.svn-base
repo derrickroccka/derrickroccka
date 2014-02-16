@@ -1,0 +1,1 @@
+<img id="<?php echo $row->name; ?>" src=".<?php echo $row->thumbnail; ?>" title="<?php echo $row->name; ?>"alt="<?php echo $row->name; ?>" class="thumbnail-web-info"/>

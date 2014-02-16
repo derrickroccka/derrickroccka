@@ -1,0 +1,99 @@
+/**
+*
+* PROJECTS SECTION LESS FILE
+* @author Derrick Roccka
+**/
+
+/*===============================
+=            IMPORTS            =
+===============================*/
+
+@import 'mixins.less';
+@import 'cardinal.less';
+
+/*-----  End of IMPORTS  ------*/
+
+#projects-container{
+	#projects{
+		.strip;
+		.projects-item{
+			//.inline-block;
+			//background: @white;
+			color: @pink;
+			//float: left;
+			//height: @proj-item-h;
+			//margin: 0 2px 2px 0;
+			position: relative;
+			width: @proj-item-w;
+			ul{
+				font-family: @font-extra;
+				//height: @proj-item-h;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				//width: @proj-item-w;
+				li{
+					.decoration-none;
+					list-style: none;
+					a{
+						&:hover{
+							color: @grey;
+						}
+						.decoration-none;
+						color: @pink;
+					}
+				}
+				.project-tech{
+					color: @grey;
+					font-size: @h1/1.75;
+					padding: 10px 5px;
+					
+				}
+				.project-progress-title{
+					.text_center;
+				}
+				.project-progress-bar{
+					background: @pink;
+				}
+				.project-url{
+					.text_center;
+					padding: 10px 0;
+				}
+				.project-name{
+					.text_center;
+					background: @pink;
+					// bottom: 0;
+					// position: absolute;
+					// width: 100%;
+					h2{
+						color: @white !important;
+						font-family: @font-heads;
+						font-size: @h1;
+					}
+				}
+			}
+
+		}
+		float: left;
+	}
+	#projects-filter{
+		clear: right;
+		cursor: pointer;
+		float: left;
+		margin: 0;
+		padding: 0;
+		li{
+			&:after{
+				content: "\00a0\00a0//\00a0\00a0";
+			}
+			.decoration-none;
+			.inline-block;
+			list-style: none;
+			span{
+				&:hover{
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}

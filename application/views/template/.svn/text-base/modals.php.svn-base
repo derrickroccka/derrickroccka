@@ -1,0 +1,67 @@
+<!-------------------->
+<!-- más info modal -->
+<!-------------------->
+
+<!--Passing data to the partial that has the first block of code of my modals-->
+<?php $datos = array(
+	"nombre" => "info",
+	"titulo" => "Informaci&oacute;n sobre ".$title
+); ?>
+<?= partial('partials/_modalOpen', $datos) ?>
+		<p>
+			Stop desilusi&oacute;n es el lugar donde encontrar&aacute;s las mejores iniciativas sociales de la red. Agrupamos aquellas plataformas en las que podr&aacute;s encontrar ayuda y recursos en estos tiempos tan complicados.
+			Adem&aacute;s, podr&aacute;s opinar y ver qu&eacute; opinan de ellas el resto de usuarios. 
+		</p>
+		<p>
+			Si necesitas m&aacute;s informaci&oacute;n, contacta con nosotros en 
+			<a title="Contactar con <?php echo CORREO_INFO; ?>" href="mailto:info@duuit.net?Subject=Necesito%20info">
+				<?php echo CORREO_INFO; ?>
+			</a>
+		</p>
+		<p>
+			Gracias y mucha suerte :]
+		</p>
+<!--Closing the modal-->		
+<?= partial('partials/_modalClose', $datos) ?>
+
+<!-------------------->
+<!-- colabora modal -->
+<!-------------------->
+
+<!--Passing data to the partial that has the first block of code of my modals-->
+<?php $datos = array(
+	"nombre" => "colabora",
+	"titulo" => "Colabora con ".$title
+); ?>
+<?= partial('partials/_modalOpen', $datos) ?>
+		<p>
+			Si est&aacute;s inmerso en alguna iniciativa o quieres sugerirnos alguna en particular, no dudes en hacerlo. 
+		</p>
+		<p>
+			¿Quieres colaborar con nosotros? Env&iacute;anos un correo a 
+			<a title="Contactar con <?php echo CORREO_COLABORA; ?>" href="mailto:<?php echo CORREO_COLABORA; ?>?Subject=Necesito%20info">
+				<?php echo CORREO_COLABORA; ?>
+			</a>
+		</p>
+<!--Closing the modal-->		
+<?= partial('partials/_modalClose', $datos) ?>
+
+<!-------------------->
+<!-- sugiere modal -->
+<!-------------------->
+
+<div id="sugiere-modal" class="modal hide fade merriNormal" tabindex="-1" role="dialog" aria-labelledby="sugiere-modal-label" aria-hidden="true">
+	<div class="modal-header transparent-back">
+		<button type="button" class="close architects white-font" data-dismiss="modal" aria-hidden="true">
+			×
+		</button>
+		<h3 id="sugiere-modal-label" class="architects white-font">Sugiere una web</h3>
+		<!--mensaje de error-->
+		<h4 id="response" class="white-font architects">
+			<!-- <?php if($this->session->flashdata('response')) '<pre>'.print_r( $this->session->flashdata('response')).'<pre>'; ?> -->
+		</h4>
+	</div>
+	<div class="modal-body">
+		<form id="sugiere-form"></form>
+	</div>
+</div>

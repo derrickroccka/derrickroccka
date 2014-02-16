@@ -1,0 +1,8 @@
+<footer id="footer" class="container architects orange-back white-font">
+	<div id="slogan" class="row-fluid text-center center">
+		<blockquote>
+			<p><?php echo $slogan; ?></p>
+			<small><?php echo $author; ?> <cite title="Source Title">para <?php echo $title; ?></cite></small>
+		</blockquote>
+	</div>
+</footer>

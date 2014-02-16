@@ -1,0 +1,118 @@
+<?php
+if (!defined('BASEPATH'))
+	exit('No direct script access allowed');
+
+class Home extends MY_Controller {
+	/**
+	 * INDEX
+	 * 
+	 * Loads presenters (if needed)
+	 * Sets titles, keywords and other basic information (if needed)
+	 * Renders the page
+	 * @author Derrick Roccka
+	 * */
+	 	
+	public function index() {
+		require_once APPPATH . 'presenters/webs_presenter.php';
+		/*
+		 *set up title and keywords (if not the default in custom.php config file will be set)...
+		 */
+		 
+		//renders the desired page in /application/views/pages/
+		$this -> _render('pages/home');
+	}
+
+	//------------------------------------------------------------
+	
+	/**
+	 * SUGIERE
+	 * 
+	 * Allows the user to suggest a new website
+	 * @author Derrick Roccka
+	 * */
+	public function sugiere() {
+		//fields from "sugiere-form"
+		$web = array(
+			'name' => $this -> input -> post('name'),
+			'url' => $this -> input -> post('url'),
+			'description' => $this -> input -> post('description'),
+			'thumbnail' => $this -> input -> post('thumbnail')
+		);
+		//the email is treated separately due it's included in a different DB table
+		$email = array (
+			'mail' => $this -> input -> post('mail'),
+			'id_web' => 0
+		);
+		//we'll take advantage of the insert query of the website to give a value to $email['id_web']	
+		if ($email['id_web'] = $this -> web_model -> insert($web)) {
+				//if the website is inserted, we'll continue inserting the email in its table
+				if($email_id = $this -> email_model -> insert($email)){
+					//returns a message to the user
+					$this -> session -> set_flashdata('response', 'Web sugerida correctamente. Gracias :]');
+					echo json_encode("Web sugerida correctamente. Gracias :]".$web['thumbnail']);
+				}
+		}
+		//sending errors to the view
+		else {
+			//validation errors are sent to the view
+			echo json_encode(validation_errors());
+		}
+	}
+	
+	//------------------------------------------------------------
+	
+	/**
+	 * WEB INFO
+	 * 
+	 * Allows the user to see each web information, share it, visit it...
+	 * Recieves an id vía AJAX and fetches the relative info from the DB
+	 * @author Derrick Roccka
+	 * */
+	 
+	public function webInfo(){
+		//retrieving the id from an AJAX query
+		$id = array(
+			'id' => $this -> input -> post('id'),
+		);
+		//fetching the related info from the DB
+		$result = $this -> web_model -> get_all($id);
+		//returns the JSON encoded result to the AJAX success function 
+		echo json_encode($result);
+	}
+	
+	//------------------------------------------------------------
+	
+	/**
+	 * VOTE
+	 * 
+	 * Allows the user to vote a website
+	 * Retrieving post data vía AJAX (except ip)
+	 * @author Derrick Roccka
+	 * */
+	 public function vote(){
+	 	//fields to set in the table "scores"
+	 	$score = array(
+	 		'id_web' => $this -> input -> post('id_web'),
+			'score' => $this -> input -> post('score'),
+			'ip' =>  $this->input->ip_address()
+		);
+		//fields to analyze if updating
+		$where = array(
+			'id_web'=>$score['id_web'],
+			'ip'=>$score['ip']
+		);
+		//if is there a vote with the same id_web and ip we'll update it
+		if ($id = $this -> score_model -> get_all($where)){
+			if($score_id = $this -> score_model -> update($where,$score)){
+				$this -> session -> set_flashdata('hint', 'Has cambiado tu voto. Gracias :]');
+				echo json_encode("Has cambiado tu voto. Gracias :]");
+			}
+		}
+		//if there's no equal vote registered, we'll insert a new row
+		else if($score_id = $this -> score_model -> insert($score)){
+			//returns a message to the user
+			$this -> session -> set_flashdata('hint', 'Votaci&oacute;n correcta. Gracias :]');
+			echo json_encode("Votaci&oacute;n correcta. Gracias :]");
+		}
+	 }
+}

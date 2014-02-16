@@ -1,0 +1,371 @@
+
+/*venía por defecto*/
+::-moz-selection {
+	background: #fe57a1;
+	color: #fff;
+	text-shadow: none;
+}
+::selection {
+	background: #fe57a1;
+	color: #fff;
+	text-shadow: none;
+}
+
+/*----------------------------------------------------------------*/
+/*********/
+/*CLASES*/
+/*******/
+/*----------------------------------------------------------------*/
+
+/*clases genéricas*/
+.center {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+.clear {
+	clear: both;
+	*zoom: 1;
+	height: 0;
+	visibility: hidden;
+	display: block;
+}
+.separator{
+	margin-left: 5px;
+}
+.margin-right-20-px{
+	margin-right: 20px;
+}
+/*displays*/
+.display-inline-block{
+	display: inline-block;
+}
+.display-none{
+	display: none;
+}
+.display-block{
+	display: block;
+}
+
+/*modals*/
+/*override .modal*/
+/*.modal button, .modal input[type="submit"]{
+	-webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+}*/
+/*override .modal*/
+.close{
+	color: #fff;
+}
+
+/**
+ * COLORS
+ * 
+ * Color references
+ * 
+ * #1b325f -> transparent-back
+ * #3a89c9 -> purpleSeparator-back-sk2
+ * #e9f2f9 -> comment-back
+ * #f26c4f -> orange-back
+ * #fff -> white-font
+ * 
+ * */
+ 
+ /*colores backgrounds*/
+.transparent-back{
+	background: #1b325f;
+}
+.purpleSeparator-back-sk2{
+	background: #3a89c9;
+}
+.comment-back{
+	background: #e9f2f9;
+}
+.orange-back{
+	background: #f26c4f;
+}
+/*colores fuentes*/
+.white-font{
+	color: #fff;
+}
+.white-font-hover:hover{
+	color: #fff;
+}
+/**
+ * FONTS
+ * 	
+ * Font references
+ * MERRIWEATHER -> .merriNormal, .merriBold
+ * Architects Daughter -> .architects
+ * */
+/*types*/
+.merriNormal {
+	font-family: 'Merriweather', normal;
+}
+.merriBold {
+	font-family: 'Merriweather', bold;
+}
+.architects{
+	font-family: 'Architects daughter', normal;
+}
+/*decoration*/
+.text-decoration-none{
+	text-decoration: none;
+}
+.text-decoration-none:hover{
+	text-decoration: none;
+}
+/*size*/
+.font-25{
+	font-size: 25px;
+}
+/*----------------------------------------------------------------*/
+/*********/
+/*HEADER*/
+/*******/
+/*----------------------------------------------------------------*/
+
+#fixed-header a:hover{
+	color: #fff;
+	zoom: 150%; 
+	-moz-transform: scale(2);
+}
+#sugiere-btn {
+	margin-top: -1px;
+}
+#sugiere-btn a:hover{
+	color: #fff;
+	text-decoration: none;
+}
+#sugiere-btn:hover{
+	background: #f26c4f;
+}
+
+/*----------------------------------------------------------------*/
+/*******/
+/*BODY*/
+/*****/
+/*----------------------------------------------------------------*/
+
+/**
+ * Website slider	
+ * */
+#slider {
+	width: 100%;
+	height: 150px;
+	margin-top: 61px;
+	position: relative;
+}
+/**
+ * Slider img resized by Derrick Roccka	
+ * */
+#slider img {
+	width: 150px;
+	height: 150px;
+}
+
+/* Replace the last selector for the type of element you have in
+ your scroller. If you have div's use #slider div.scrollableArea div,
+ if you have links use #slider div.scrollableArea a and so on. */
+#slider div.scrollableArea img {
+	position: relative;
+	float: left;
+	margin: 0;
+	padding: 0;
+	/* If you don't want the images in the scroller to be selectable, try the following
+	 block of code. It's just a nice feature that prevent the images from
+	 accidentally becoming selected/inverted when the user interacts with the scroller. */
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+/* You can alter this CSS in order to give Smooth Div Scroll your own look'n'feel */
+
+/* Invisible left hotspot */
+div.scrollingHotSpotLeft {
+	/* The hotspots have a minimum width of 100 pixels and if there is room the will grow
+	 and occupy 15% of the scrollable area (30% combined). Adjust it to your own taste. */
+	min-width: 75px;
+	width: 10%;
+	height: 100%;
+	/* There is a big background image and it's used to solve some problems I experienced
+	 in Internet Explorer 6. */
+	background-image: url(../img/slider/big_transparent.gif);
+	background-repeat: repeat;
+	background-position: center center;
+	position: absolute;
+	z-index: 200;
+	left: 0;
+	/*  The first url is for Firefox and other browsers, the second is for Internet Explorer */
+	cursor: url(../img/cursors/cursor_arrow_left.png), url(../img/slider/cursors/cursor_arrow_left.cur), w-resize;
+}
+
+/* Visible left hotspot */
+div.scrollingHotSpotLeftVisible {
+	background-image: url(../img/slider/arrow_left.gif);
+	background-color: #fff;
+	background-repeat: no-repeat;
+	opacity: 0.35; /* Standard CSS3 opacity setting */
+	-moz-opacity: 0.35; /* Opacity for really old versions of Mozilla Firefox (0.9 or older) */
+	filter: alpha(opacity = 35); /* Opacity for Internet Explorer. */
+	zoom: 1; /* Trigger "hasLayout" in Internet Explorer 6 or older versions */
+}
+
+/* Invisible right hotspot */
+div.scrollingHotSpotRight {
+	min-width: 75px;
+	width: 10%;
+	height: 100%;
+	background-image: url(../img/slider/big_transparent.gif);
+	background-repeat: repeat;
+	background-position: center center;
+	position: absolute;
+	z-index: 200;
+	right: 0;
+	cursor: url(../img/slider/cursors/cursor_arrow_right.png), url(../img/slider/cursors/cursor_arrow_right.cur), e-resize;
+}
+
+/* Visible right hotspot */
+div.scrollingHotSpotRightVisible {
+	background-image: url(../img/slider/arrow_right.gif);
+	background-color: #fff;
+	background-repeat: no-repeat;
+	opacity: 0.35;
+	filter: alpha(opacity = 35);
+	-moz-opacity: 0.35;
+	zoom: 1;
+}
+
+/* The scroll wrapper is always the same width and height as the containing element (div).
+ Overflow is hidden because you don't want to show all of the scrollable area.
+ */
+div.scrollWrapper {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+div.scrollableArea {
+	position: relative;
+	width: auto;
+	height: 100%;
+}
+
+/*
+ * Added by Derrick Roccka
+ * Slider thumbnails events
+ * */
+.thumbnail-selected{
+	-moz-box-shadow: -1px 7px 27px #000000;
+	-moz-transform: scale(1.5);
+	-webkit-box-shadow: -1px 7px 27px #000000;
+	box-shadow: -1px 7px 27px #000000;
+	zoom: 150%;
+}
+
+/*END SLIDER*/
+
+/**
+ * WEB INFO 	
+ * */
+.thumbnail-web-info {
+	width: 100%;
+	height: 300px;
+}
+
+.border-bottom-red {
+	border-bottom: 3px solid red;
+}
+
+#vote{
+	margin-top: 5px;
+}
+
+#web-info-options{
+	height: 40px;
+	max-height: 120px;
+	margin-top: 5px;
+}
+
+.web-info-options{
+	float: right;
+    height: 40px;
+}
+#comentar{
+	line-height: normal;
+    vertical-align: baseline;
+}
+/*Share buttons*/
+.share{
+	background: url("../img/social/social-buttons.png") no-repeat left top transparent;
+	cursor: pointer;
+	font-size: 0;
+	height: 40px;
+	margin: 0;
+	width: 40px;
+}
+.share-fb{
+	background-position: 0 0;
+}
+.share-tw{
+	background-position: -40px 0;
+}
+.share-gp{
+	background-position: -80px 0;
+}	
+.share-em{
+	background-position: -120px 0;
+}
+
+
+/*----------------------------------------------------------------*/
+/*********/
+/*FOOTER*/
+/*******/
+/*----------------------------------------------------------------*/
+
+#footer{
+	width: 100%;
+}
+#slogan blockquote{
+	border-left: none;
+	padding: 0;
+}
+
+/*----------------------------------------------------------------*/
+/****************/
+/*MEDIA QUERIES*/
+/**************/
+/*----------------------------------------------------------------*/
+
+/*hecho para que el slider se coloque bien de altura y por debajo del botón de sugiere*/
+@media only screen and (max-width: 985px)
+and (min-width: 785px) {
+	#slider {
+		margin-top: -19px;
+	}
+}
+/*hecho para que el slider se coloque bien de altura y por debajo del botón de sugiere*/
+@media only screen and (max-width: 767px)
+{
+	#slider {
+		margin-top: -19px;
+	}
+}
+/*made to adapt "web-info-optoins" on screens below 450px*/
+@media only screen and (max-width: 435px)
+{
+	#web-info-options {
+		height: auto;
+	}
+	.display-block-at-435{
+		display: block;
+	}
+	#web-info-options-links{
+		width: 100%;
+	}
+}

@@ -1,0 +1,371 @@
+//------------------------------------------------------------
+/******************/
+/*GENERATED FORMS*/
+/****************/
+/*
+* Made with jQuery.dForm
+* Location: /resources/js/libs/ajaxfileupload.js
+* */
+//------------------------------------------------------------
+
+/**
+ * Generates "sugiere-form"
+ * Form dedicated to suggest a website
+ * @author Derrick Roccka
+ *  */
+$(function() {
+	$("#sugiere-form").dform({
+		"action" : "",
+		"method" : "post",
+		"enctype" : "multipart/form-data",
+		"html" : [
+		//first paragraph
+		{
+			"type" : "label",
+			"for" : "name",
+			"html" : "Nombre de la web"
+		}, {
+			"type" : "p",
+			"html" : [{
+				"name" : "name",
+				"id" : "name",
+				"type" : "text",
+				"placeholder" : "Nombre de la web"
+			}]
+		},
+		//second paragraph
+		{
+			"type" : "label",
+			"for" : "url",
+			"html" : "URL"
+
+		}, {
+			"type" : "p",
+			"html" : [{
+				"name" : "url",
+				"id" : "url",
+				"type" : "url",
+				"placeholder" : "http://www.tuweb.aqui"
+			}]
+		},
+		//third paragraph
+		{
+			"type" : "label",
+			"for" : "description",
+			"html" : "Descripci&oacute;n"
+		}, {
+			"type" : "p",
+			"html" : [{
+				"name" : "description",
+				"id" : "description",
+				"type" : "textarea",
+				"placeholder" : "Describe la web"
+			}]
+		},
+		//fourth paragraph
+		{
+			"type" : "label",
+			"for" : "thumbnail",
+			"html" : "Logo de la web"
+		}, {
+			"type" : "p",
+			"html" : [{
+				"name" : "thumbnail",
+				"id" : "thumbnail",
+				"type" : "file",
+				"required" : "required"
+			}]
+		},
+		//fifth paragraph
+		{
+			"type" : "label",
+			"for" : "mail",
+			"html" : "Tu email"
+		}, {
+			"type" : "p",
+			"html" : [{
+				"name" : "mail",
+				"id" : "mail",
+				"type" : "text",
+				"placeholder" : "tu@email.aqui"
+			}]
+		},
+		//footer form
+		{
+			"class" : "modal-footer orange-back",
+			"type" : "div",
+			"html" : [{
+				"class" : "btn architects",
+				"id" : "sugiere-submit",
+				"type" : "submit",
+				"value" : "Sugerir"
+			}, {
+				"class" : "btn architects",
+				"data-dismiss" : "modal",
+				"aria-hidden" : "true",
+				"type" : "button",
+				"html" : "Cerrar"
+			}]
+		}]//end first html
+	});
+});
+
+//------------------------------------------------------------
+/******************/
+/*AJAX QUERIES*/
+/****************/
+/*
+* Made with ajaxfileupload 
+* Location: /resources/js/ajaxfileupload.js
+* */
+//------------------------------------------------------------
+
+/**
+ * SUGIERE UNA WEB
+ *
+ * Allows the user to suggest a new website
+ * Necessary functions listed below:
+ * @see #ajaxFileUpload 
+ * @see #sugiere 
+ * @author Derrick Roccka
+ *  */
+
+$('#sugiere-form').submit(function(e) {
+	e.preventDefault();
+	//calls ajaxFileUpload and passes "thumbnail" as the name of the file field
+	var upload = ajaxFileUpload("thumbnail");
+	// End of ajax call
+	return false;
+});
+
+//------------------------------------------------------------
+
+/**
+ * AJAX FILE UPLOAD 
+ * 
+ * Allows the user to upload a file via AJAX
+ * Called on submit in "sugiere-form" 
+ * This function calls "sugiere" function
+ * This is because we'll need the name of the file uploaded
+ * before introducing a new row in the DB
+ * 
+ * @param field		name of the file field
+ * @author Derrick Roccka
+ *  */
+function ajaxFileUpload (field){
+	
+	$.ajaxFileUpload({
+		url : 'upload/do_upload/',
+		secureuri : false,
+		fileElementId : field,
+		dataType : 'json',
+		data : {
+			'field' : field
+		},
+		success : function(data, status) {
+			if (data.status != 'error') {
+				sugiere(data);
+			}
+		}
+	});
+	
+	
+}
+
+//------------------------------------------------------------
+
+/**
+ * SUGIERE 
+ * 
+ * Allows the user to suggest a web site via "sugiere-form"
+ * Called inside ajaxFileUpload()
+ * @param field		name of the file field
+ * @author Derrick Roccka
+ *  */
+function sugiere(data){
+	var d = data;
+	alert(data);
+	$.ajax({
+		url : "home/sugiere/",
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			mail : $('#mail').val(),
+			name : $('#name').val(),
+			url : $('#url').val(),
+			description : $('#description').val(),
+			thumbnail : "/uploads/"+d['upload_data']['file_name']
+		},
+		success : function(output_string) {
+			$('#response').html(output_string);
+		},
+		error : function(msg) {
+			$('#response').html("Error en la petici&oacute;n");
+		}
+	});
+}
+
+//------------------------------------------------------------
+
+/**
+ * SHOW WEB INFO 
+ * 
+ * Allows the user to see each web information, share it, visit it...
+ * Passes an id to webInfo() function in /application/controllers/home.php
+ * webInfo() will return the result JSON encoded
+ * @author Derrick Roccka
+ *  */
+$('.thumbnail-slider').click(function() {
+	$.ajax({
+		url : "home/webInfo/",
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			id : $(this).attr('id'),
+		},
+		success : function(data) {
+			//sets website name in the separator
+			$('#separator-title').html(data[0]['name']);
+			//sets website name in the comments separator
+			$('#separator-comments-title').html("Comentarios sobre "+data[0]['name']);
+			//sets website name as a title in the box
+			$('#web-info-title').html(data[0]['name']);
+			//sets website thumbnail in the box
+			$('#web-info-thumbnail').html('<img id="'+data[0]['name']+'" src=".'+data[0]['thumbnail']+'" title="'+data[0]['name']+'" alt="'+data[0]['name']+'" class="thumbnail-web-info"/>');
+			//sets website description
+			$('#web-info-description').html(data[0]['description']);
+			//setting "raty" score
+			$('#star').raty({ 
+				cancel    : false,
+				target    : '#hint',
+		  		targetType: 'number',
+		  		targetKeep: true
+			});
+			//sets value for hidden value in #web-selected
+			$('#web-selected').attr('value',data[0]['id']);
+			//web-info-options settings
+			$("#visitar").html("<a href='"+data[0]['url']+"' title='Visitar "+data[0]['name']+"' class='white-font white-font-hover architects text-decoration-none font-25' target='_blank'>Visitar</a>");
+			$("#comentar").html("<a href='' title='Comentar sobre "+data[0]['name']+"' class='white-font white-font-hover architects text-decoration-none font-25'>Comentar</a>");
+			$(".share-fb").attr("href", "http://www.facebook.com/share.php?u="+data[0]['url']+"&title="+data[0]['name']);
+			$(".share-tw").attr("href", "http://twitter.com/home?status="+data[0]['name']+"+"+data[0]['url']);
+			$(".share-gp").attr("href", "https://plus.google.com/share?url="+data[0]['url']);
+			$(".share").attr("title", "Comparte "+data[0]['name']);
+			$(".share").attr("target", "_blank");
+			//setting css properties for #web-info
+			//array passed to cssProps
+			var data = new Array();
+			//adding classes
+			data[0]={ "target":"#web-info-title" , "class":"border-bottom-red" }; 
+			data[1]={ "target":"#vote" , "class":"display-block" }; 
+			data[2]={ "target":"#web-info-options" , "class":"display-block" }; 
+			cssProps(data, "add");
+			//removing classes
+			data[0]={ "target":"#vote" , "class":"display-none" }; 
+			data[1]={ "target":"#web-info-options" , "class":"display-none" }; 
+			data[2]={ "target":"#separator-comments" , "class":"display-none" }; 
+			cssProps(data, "remove");
+			
+		},
+		error : function(msg) {
+			$('#web-info').html("Error al cargar la informaci&oacute;n");
+		}
+	});
+});
+
+//------------------------------------------------------------
+
+/**
+ * VOTE
+ * 
+ * Allows the user to vote a website
+ * @author Derrick Roccka
+ *  */
+
+$('#vote').click(function() {
+	$.ajax({
+		url : "home/vote/",
+		type : 'POST',
+		dataType : 'json',
+		data : {
+			id_web : $("input[name=web-selected]").val(),
+			score : $("input[name=score]").val()
+		},
+		success : function(output_string) {
+			$('#hint').html(output_string);
+		},
+		error : function(msg) {
+			$('#hint').html("No se ha completado la votaci&oacute;n");
+		}
+	});
+});
+
+//------------------------------------------------------------
+/******************/
+/*AESTHETICAL EVENTS*/
+/****************/
+//------------------------------------------------------------
+
+/**
+ * CSS PROPS
+ *
+ * Allows to use different css jQuery functions
+ * Admits JSON format
+ * For example: 
+ * data[0]={"target": "#div1", "class" : "class1"}; cssProps(data,"add"); //adds class1 to div1
+ * 
+ * @param data	array that contains a targets, classes, properties and values
+ * @param action	"add" to addClass(), "remove" to removeClass() or "css" to .css(). 
+ * 					Decide which function do you want to use
+ * @author Derrick Roccka
+ *  */
+
+function cssProps(data, action){
+	switch(action){
+		case "add" : 
+		for(var i=0,j=data.length; i<j; i++){
+	  		$(data[i]['target']).addClass(data[i]['class']);
+		}; break;
+		
+		case "remove" : 
+		for(var i=0,j=data.length; i<j; i++){
+	  		$(data[i]['target']).removeClass(data[i]['class']);
+		}; break;
+		
+		case "css" : 
+		for(var i=0,j=data.length; i<j; i++){
+	  		$(data[i]['target']).css(data[i]['prop'],data[i]['value']);
+		}; break;
+		
+		default : return false; break;
+	}
+}
+
+//------------------------------------------------------------
+
+/**
+ * ZOOM IN SLIDER THUMBNAIL 
+ *
+ * On clicking a slider thumbnail
+ * @author Derrick Roccka
+ *  */
+
+$('.thumbnail-slider').click(function() {
+	$(".thumbnail-slider").removeClass("thumbnail-selected");
+	$(this).addClass("thumbnail-selected");
+});
+
+//------------------------------------------------------------
+
+/**
+ * ZOOM OUT SELECTED SLIDER THUMBNAIL 
+ *
+ * On clicking a selected slider thumbnail
+ * @author Derrick Roccka
+ *  */
+
+$('.thumbnail-selected').click(function() {
+	$(".thumbnail-slider").removeClass("thumbnail-selected");
+});
+
+//------------------------------------------------------------
+
