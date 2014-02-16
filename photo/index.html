@@ -3,8 +3,37 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Derrick Roccka // My Instagram Feed</title>
+	<script src="assets/js/instafeed.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Noto Sans'), local('NotoSans'), url(http://themes.googleusercontent.com/static/fonts/notosans/v2/LeFlHvsZjXu2c3ZRgBq9nD8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+        }
+        @font-face {
+            font-family: 'Noto Sans';
+            font-style: normal;
+            font-weight: 700;
+            src: local('Noto Sans Bold'), local('NotoSans-Bold'), url(http://themes.googleusercontent.com/static/fonts/notosans/v2/PIbvSEyHEdL91QLOQRnZ13hCUOGz7vYGh680lGh-uXM.woff) format('woff');
+        }
+        h1, h2{
+            font-family: "Noto Sans", sans-serif;
+            text-align: center;
+        }
+        h2, a{
+            color: #e87bae;
+        }
+        #instafeed{
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
+    <h1>Check out my instafreak creations</h1>
+    <h2>Back to <a href="/">derrickroccka.com</a></h2>
 	<script type="text/javascript" async defer>
     var userFeed = new Instafeed({
         get: 'user',
