@@ -3,10 +3,10 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Mr:  Derrick Roccka
+  Site:  www.derrickroccka.com
+  Twitter:  @deroccka
+  Location:  Living at Who Knows
 
 /* THANKS */
   Names (& URL):
@@ -14,7 +14,7 @@
 /* SITE */
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery
-  Software:
+  Software: Codeigniter, Backbone
 
 
 
