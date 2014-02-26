@@ -6,7 +6,7 @@
   Mr:  Derrick Roccka
   Site:  www.derrickroccka.com
   Twitter:  @deroccka
-  Location:  Living at Who Knows
+  Location:  Living at Who Knows  :D
 
 /* THANKS */
   Names (& URL):
@@ -15,6 +15,7 @@
   Standards: HTML5, CSS3
   Components: Modernizr, jQuery
   Software: Codeigniter, Backbone
+  and so on...
 
 
 
