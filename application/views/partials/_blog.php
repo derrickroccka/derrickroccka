@@ -8,8 +8,8 @@ preg_match("'<h2 class=\"post-title\">(.*?)</h2>'", $html, $display);
 <section id="blog-container" class="section">
 	<?php echo partial('partials/_section-header', $data) ?>
 	<style>
-		.blog-title{text-decoration: none;}
-		.blog-title:hover{color: #cf7aab;}
+		.blog-title a{text-decoration: none;}
+		.blog-title:hover a{color: #cf7aab;}
 	</style>
 	<p style="font-size: 7rem;text-align:center; margin-top: 15%;color: #444;" class="blog-title"><?php echo $display[1];?></p>
 </section>
