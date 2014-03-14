@@ -12,5 +12,8 @@ preg_match("'<h2 class=\"post-title\">(.*?)</h2>'", $html, $display);
 		.blog-title a{color: #444; text-decoration: none;}
 		.blog-title:hover a{color: #cf7aab;}
 	</style>
-	<p class="blog-title"><?php echo $display[1];?></p>
+	<p class="blog-title">
+		<small>Última entrada</small><br>
+		<?php echo $display[1];?>
+	</p>
 </section>
